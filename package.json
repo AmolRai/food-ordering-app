@@ -1,0 +1,29 @@
+{
+  "name": "namaste-react",
+  "version": "1.0.0",
+  "description": "Namaste React by Amol Rai",
+  "scripts": {
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AmolRai/namaste-react.git"
+  },
+  "author": "Amol Rai",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AmolRai/namaste-react/issues"
+  },
+  "homepage": "https://github.com/AmolRai/namaste-react#readme",
+  "dependencies": {    
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "process": "^0.11.10",
+    "parcel": "^2.9.3"
+  },
+  "browserslist": [
+    "last 2 versions"
+  ]
+}
