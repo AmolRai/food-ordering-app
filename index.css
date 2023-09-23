@@ -22,6 +22,7 @@
   font-size: 24px;
   display: flex;
   list-style-type: none;
+  align-items: center;
 }
 
 .nav-items ul li {
@@ -32,10 +33,16 @@
 .restro-container {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+}
+
+.restro-container a {
+  text-decoration: none;
+  color: black;
 }
 
 .restro-card {
-  width: 200px;
+  width: 240px;
   padding: 12px;
   background-color: #f0f0f07a;
   border-radius: 10px;
@@ -43,6 +50,7 @@
   flex-direction: column;
   gap: 10px;
   margin: 10px;
+  margin-top: 2rem;
 }
 
 .restro-card:hover {
@@ -57,4 +65,34 @@
 
 .restro-logo {
   width: 100%;
+}
+
+.shimmer-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4rem;
+}
+
+.shimmer-card {
+  width: 250px;
+  height: 300px;
+  background-color: #f0f0f0;
+}
+
+.login {
+  padding: 12px;
+  cursor: pointer;
+}
+
+.search {
+  margin: 10px;
+}
+
+.search button {
+  cursor: pointer;
+  padding: 3px;
+  margin-left: 10px;
 }

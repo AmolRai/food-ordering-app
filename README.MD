@@ -19,3 +19,20 @@
 - HTTPs
 - Tree Shaking - remove unused codes
 - Different dev and production bundles
+
+# Food Ordering Application Features
+
+# 1. Home Page Features
+
+- https://www.swiggy.com/
+- Build best offers for you
+- What's on your mind?
+- Top restaurant
+
+# 2. Restaurant Menu Page features
+
+- https://www.swiggy.com/restaurants/burger-king-ag-patil-marg-nerul-mumbai-42580
+- Show the entire restaurant information
+- Build the entire menus of cards
+- Build offers card
+- Build veg only feature
