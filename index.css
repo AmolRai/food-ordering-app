@@ -96,3 +96,16 @@
   padding: 3px;
   margin-left: 10px;
 }
+
+.user {
+  border: 1px solid black;
+  margin: 10px;
+  padding: 10px;
+}
+
+.menu {
+  margin: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
