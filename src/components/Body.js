@@ -3,11 +3,11 @@ import { useEffect, useState } from "react";
 import { RESTAURANT_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
   // Whenever state variables update, react triggers reconciliation
   // cycle(re-renders the compoenent)
-
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
   const [searchText, setSearchText] = useState("");
@@ -45,6 +45,15 @@ const Body = () => {
       );
     }
   };
+
+  const onlineStatus = useOnlineStatus();
+  if (!onlineStatus) {
+    return (
+      <h1>
+        Seems like you're offline!!! Please check your internet connection
+      </h1>
+    );
+  }
 
   return listOfRestaurants?.length === 0 ? (
     <Shimmer />
