@@ -20,6 +20,15 @@
 - Tree Shaking - remove unused codes
 - Different dev and production bundles
 
+# Lazy Loading Different Names
+
+- Chunking
+- Code Splitting
+- Dynamic Bundling
+- lazy loading
+- on demand loading
+- dynamic import
+
 # Food Ordering Application Features
 
 # 1. Home Page Features
