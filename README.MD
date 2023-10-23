@@ -45,3 +45,12 @@
 - Build the entire menus of cards
 - Build offers card
 - Build veg only feature
+
+# 3. Redux Toolkit
+
+- Install @reduxjs/toolkit and react-redux
+- Build our Store
+- Connect our store to our app
+- Dispatch(action)
+- Calls the reducer function
+- Subscribing to the store using selector

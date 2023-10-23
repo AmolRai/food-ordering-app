@@ -1,6 +1,6 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useContext, useEffect, useState } from "react";
-import { RESTAURANT_API } from "../utils/constants";
+import { API_DATA, RESTAURANT_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
@@ -22,34 +22,14 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    const localData = localStorage.getItem("restaurants");
-
-    const jsonData = JSON.parse(localData);
-
-    if (jsonData !== null) {
-      setListOfRestaurants(jsonData);
-      setFilteredRestaurant(jsonData);
-    } else {
-      const data = await fetch(RESTAURANT_API);
-      const json = await data.json();
-
-      localStorage.setItem(
-        "restaurants",
-        JSON.stringify(
-          json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-            ?.restaurants
-        )
-      );
-
-      setListOfRestaurants(
-        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-      setFilteredRestaurant(
-        json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle
-          ?.restaurants
-      );
-    }
+    setListOfRestaurants(API_DATA);
+    setFilteredRestaurant(API_DATA);
+    // setListOfRestaurants(
+    //   json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    // );
+    // setFilteredRestaurant(
+    //   json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    // );
   };
 
   const onlineStatus = useOnlineStatus();
@@ -113,7 +93,7 @@ const Body = () => {
         </div>
       </div>
       <div className="flex flex-wrap justify-center gap-12">
-        {filteredRestaurant.map((resObj) => (
+        {filteredRestaurant?.map((resObj) => (
           <Link key={resObj?.info?.id} to={"/restaurant/" + resObj?.info?.id}>
             {resObj?.info?.sla?.deliveryTime < 25 ? (
               <RestaurantCardPromoted resData={resObj} />
