@@ -1,4 +1,4 @@
-# Namaste React by Amol Rai
+# Food Ordering Application by Amol Rai
 
 # Parcel
 
