@@ -42,16 +42,6 @@ class UserClass extends React.Component {
     return (
       <div className="user">
         <img width={200} src={avatar_url} />
-        <h3>Count: {this.state.count}</h3>
-        <button
-          onClick={() => {
-            this.setState({
-              count: this.state.count + 1,
-            });
-          }}
-        >
-          Click
-        </button>
         <h2>Name: {name}</h2>
         <h3>Bio: {bio}</h3>
         <h3>Contact: {twitter_username}</h3>

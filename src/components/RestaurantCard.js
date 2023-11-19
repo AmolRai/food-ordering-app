@@ -10,18 +10,24 @@ const RestaurantCard = ({ resData }) => {
   const { loggedInUser } = useContext(UserContext);
 
   return (
-    <div className="w-[300px] bg-gray-200 rounded-lg p-4">
+    <div className="w-[300px]">
       <img
-        className="w-50 rounded-lg mb-2"
+        className="res-img"
         alt="restro-logo"
         src={CDN_URL + cloudinaryImageId}
       />
-      <h3 className="font-bold text-lg">{name}</h3>
-      <h4>{cuisines.join(", ")}</h4>
-      <h4>{costForTwo}</h4>
-      <h4>{avgRating} stars</h4>
-      <h4>{deliveryTime} Mins</h4>
-      <h4>{loggedInUser}</h4>
+      <h3 className="font-medium text-xl mt-2">{name}</h3>
+      {/* <h4>{costForTwo}</h4> */}
+      <div className="flex items-center gap-1 font-medium">
+        <img
+          className="w-5"
+          src="https://cdn-icons-png.flaticon.com/128/3334/3334338.png"
+        />
+        <h4>{avgRating}</h4>
+        <h4>• {deliveryTime} mins</h4>
+      </div>
+      <h4 className="text-gray-500">{cuisines.join(", ")}</h4>
+      {/* <h4>{loggedInUser}</h4> */}
     </div>
   );
 };
@@ -32,8 +38,8 @@ export const withPromotedLabel = (RestaurantCard) => {
   return (props) => {
     return (
       <div>
-        <label className="absolute m-2 p-2 bg-black text-white rounded-lg">
-          Promoted
+        <label className="ad absolute m-2 p-2 text-gray-600 bg-gray-100 rounded-lg">
+          Ad
         </label>
         <RestaurantCard {...props} />
       </div>

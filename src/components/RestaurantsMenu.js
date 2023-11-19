@@ -46,7 +46,6 @@ const RestaurantsMenu = () => {
           <p className="font-bold text-[#3E4152]">{costForTwoMessage}</p>
         </div>
         <div className="dash-border"></div>
-        <button className="w-6/12 text-left mt-4">Veg Only Filter</button>
       </div>
       {/* Accordian */}
       <div className="mb-8">

@@ -15,40 +15,55 @@ const Header = () => {
   // This store inside useSelector give us access to whole
   // store but we only need our cart store items
   const cartItems = useSelector((store) => store.cart.items);
-  console.log(cartItems);
 
   return (
-    <div className="flex justify-between items-center p-6 shadow-lg mb-14">
+    <div className="flex justify-between items-center p-4 shadow-lg mb-8">
       <div className="logo-container">
-        <img className="w-14" src={LOGO_URL} />
+        <img className="w-12 ml-20" src={LOGO_URL} />
+        <h1 className="text-medium text-lg">Order Food</h1>
       </div>
       <div className="nav-items">
-        <ul className="flex gap-5">
-          <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li>
+        <ul className="flex">
+          {/* <li>Online Status: {onlineStatus ? "🟢" : "🔴"}</li> */}
           <li>
-            <Link to="/">Home</Link>
+            <Link to="/" className="header-nav">
+              <img src="https://cdn-icons-png.flaticon.com/128/2549/2549900.png" />
+              Home
+            </Link>
           </li>
           <li>
-            <Link to="/about">About Us</Link>
+            <Link to="/search" className="header-nav">
+              <img src="https://cdn-icons-png.flaticon.com/128/54/54481.png" />
+              Search
+            </Link>
           </li>
           <li>
+            <Link to="/about" className="header-nav">
+              <img src="https://cdn-icons-png.flaticon.com/128/665/665049.png" />
+              About Me
+            </Link>
+          </li>
+          {/* <li>
             <Link to="/contact">Contact Us</Link>
-          </li>
+          </li> */}
           <li>
-            <Link to="/">Cart (items: {cartItems.length})</Link>
+            <Link to="/cart" className="header-nav">
+              <img src="https://cdn-icons-png.flaticon.com/128/1170/1170678.png" />
+              {cartItems.length} Cart
+            </Link>
           </li>
-          <li>
+          {/* <li>
             <Link to="/grocery">Grocery</Link>
-          </li>
-          <li className="font-bold">{loggedInUser}</li>
-          <button
+          </li> */}
+          {/* <li className="font-bold">{loggedInUser}</li> */}
+          {/* <button
             className="login"
             onClick={() => {
               btnName === "Login" ? setBtnName("Logout") : setBtnName("Login");
             }}
           >
             {btnName}
-          </button>
+          </button> */}
         </ul>
       </div>
     </div>

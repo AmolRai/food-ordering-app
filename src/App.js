@@ -11,6 +11,9 @@ import Shimmer from "./components/Shimmer";
 import UserContext from "./utils/UserContext";
 import { Provider } from "react-redux";
 import appStore from "./utils/appStore";
+import Cart from "./components/Cart";
+import Search from "./components/Search";
+import SearchRes from "./components/SearchRes";
 
 const Grocery = lazy(() => import("./components/Grocery"));
 
@@ -19,10 +22,6 @@ const App = () => {
 
   useEffect(() => {
     // Make an API call and send username and password
-    const userInfo = {
-      name: "Amol Rai",
-    };
-    setUserName(userInfo.name);
   }, []);
 
   return (
@@ -53,6 +52,18 @@ const appRoutes = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
+      },
+      {
+        path: "/search",
+        element: <Search />,
+      },
+      {
+        path: "/searchList/:text",
+        element: <SearchRes />,
       },
       {
         path: "/grocery",

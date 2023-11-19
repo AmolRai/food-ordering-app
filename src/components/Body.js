@@ -1,16 +1,20 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import { useContext, useEffect, useState } from "react";
-import { API_DATA, RESTAURANT_API } from "../utils/constants";
+import { CDN_URL, RESTAURANT_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
 import UserContext from "../utils/UserContext";
+import Footer from "./Footer";
 
 const Body = () => {
   // Whenever state variables update, react triggers reconciliation
   // cycle(re-renders the compoenent)
   const [listOfRestaurants, setListOfRestaurants] = useState([]);
   const [filteredRestaurant, setFilteredRestaurant] = useState([]);
+  const [carouselCard, setCarouselCard] = useState([]);
+  const [mindCollection, setMindCollection] = useState([]);
+  const [topBrandsCollection, setTopBrandCollection] = useState([]);
   const [searchText, setSearchText] = useState("");
 
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
@@ -22,14 +26,25 @@ const Body = () => {
   }, []);
 
   const fetchData = async () => {
-    setListOfRestaurants(API_DATA);
-    setFilteredRestaurant(API_DATA);
-    // setListOfRestaurants(
-    //   json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    // );
-    // setFilteredRestaurant(
-    //   json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants
-    // );
+    const data = await fetch(RESTAURANT_API);
+    const json = await data.json();
+    console.log(json);
+    setCarouselCard(
+      json.data.cards[0].card.card.gridElements.infoWithStyle.info
+    );
+
+    setMindCollection(
+      json.data.cards[1].card.card.gridElements.infoWithStyle.info
+    );
+
+    setTopBrandCollection(json.data.cards[2].card.card);
+
+    setListOfRestaurants(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
+    setFilteredRestaurant(
+      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+    );
   };
 
   const onlineStatus = useOnlineStatus();
@@ -45,8 +60,65 @@ const Body = () => {
     <Shimmer />
   ) : (
     <div className="body">
+      <h1 className="font-bold text-2xl m-2 ml-[6.5rem]">
+        Best Offers for you
+      </h1>
+      <div className="carousel-container">
+        <div className="carousel">
+          {carouselCard.map((card) => {
+            return (
+              <div key={card.id}>
+                <img src={CDN_URL + card.imageId} />
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      <div>
+        <h1 className="font-bold text-2xl m-2 ml-[6.5rem] mt-4">
+          What's on your mind?
+        </h1>
+        <div className="carousel-container">
+          <div className="carousel">
+            {mindCollection.map((card) => {
+              return (
+                <div key={card.id}>
+                  <img className="mind-img" src={CDN_URL + card.imageId} />
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h1 className="font-bold text-2xl m-2 ml-[6.5rem] mt-4">
+          {topBrandsCollection.header.title}
+        </h1>
+        <div className="carousel-container">
+          <div className="carousel">
+            {topBrandsCollection.gridElements.infoWithStyle.restaurants.map(
+              (card) => {
+                return (
+                  <div>
+                    <Link to={"/restaurant/" + card?.info?.id}>
+                      <img
+                        key={card.info.id}
+                        className="chain-img"
+                        src={CDN_URL + card.info.cloudinaryImageId}
+                      />
+                    </Link>
+                  </div>
+                );
+              }
+            )}
+          </div>
+        </div>
+      </div>
+
       <div className="flex items-center gap-10 m-12">
-        <div className="search">
+        <div className="body-search">
           <input
             type="text"
             placeholder="Search Restaurants"
@@ -85,14 +157,14 @@ const Body = () => {
           >
             Top Rated Restaurant
           </button>
-          <input
+          {/* <input
             value={loggedInUser}
             className="border border-black p-1 rounded-md"
             onChange={(e) => setUserName(e.target.value)}
-          />
+          /> */}
         </div>
       </div>
-      <div className="flex flex-wrap justify-center gap-12">
+      <div className="flex flex-wrap justify-center gap-4">
         {filteredRestaurant?.map((resObj) => (
           <Link key={resObj?.info?.id} to={"/restaurant/" + resObj?.info?.id}>
             {resObj?.info?.sla?.deliveryTime < 25 ? (
@@ -103,6 +175,7 @@ const Body = () => {
           </Link>
         ))}
       </div>
+      <Footer />
     </div>
   );
 };
