@@ -16,9 +16,9 @@ const Footer = () => {
         <p>About</p>
         <p>Careers</p>
         <p>Team</p>
-        <p>Swiggy One</p>
-        <p>Swiggy Instamart</p>
-        <p>Swiggy Genie</p>
+        <p>Food One</p>
+        <p>Food Instamart</p>
+        <p>Food Genie</p>
       </div>
 
       <div className="footer-info">

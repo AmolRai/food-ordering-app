@@ -223,6 +223,7 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .cart {
@@ -271,12 +272,12 @@ p {
 .profiles {
   display: flex;
   gap: 1rem;
-  margin-left: 2rem;
+  margin-left: 3.5rem;
   margin-top: 1rem;
 }
 
 .profiles img {
-  width: 3rem;
+  width: 2.5rem;
   cursor: pointer;
 }
 

@@ -10,7 +10,7 @@ const RestaurantCard = ({ resData }) => {
   const { loggedInUser } = useContext(UserContext);
 
   return (
-    <div className="w-[300px]">
+    <div className="w-[300px] hover:scale-95 transition-all">
       <img
         className="res-img"
         alt="restro-logo"
