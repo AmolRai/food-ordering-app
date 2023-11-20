@@ -64,10 +64,10 @@ const Body = () => {
       </h1>
       <div className="carousel-container">
         <div className="carousel">
-          {carouselCard.map((card) => {
+          {carouselCard?.map((card) => {
             return (
-              <div key={card.id}>
-                <img src={CDN_URL + card.imageId} />
+              <div key={card?.id}>
+                <img src={CDN_URL + card?.imageId} />
               </div>
             );
           })}
@@ -80,10 +80,10 @@ const Body = () => {
         </h1>
         <div className="carousel-container">
           <div className="carousel">
-            {mindCollection.map((card) => {
+            {mindCollection?.map((card) => {
               return (
-                <div key={card.id}>
-                  <img className="mind-img" src={CDN_URL + card.imageId} />
+                <div key={card?.id}>
+                  <img className="mind-img" src={CDN_URL + card?.imageId} />
                 </div>
               );
             })}
@@ -93,19 +93,19 @@ const Body = () => {
 
       <div>
         <h1 className="font-bold text-2xl m-2 ml-[6.5rem] mt-4">
-          {topBrandsCollection.header.title}
+          {topBrandsCollection?.header?.title}
         </h1>
         <div className="carousel-container">
           <div className="carousel">
-            {topBrandsCollection.gridElements.infoWithStyle.restaurants.map(
+            {topBrandsCollection?.gridElements?.infoWithStyle?.restaurants?.map(
               (card) => {
                 return (
-                  <div key={card.info.id}>
+                  <div key={card?.info?.id}>
                     <Link to={"/restaurant/" + card?.info?.id}>
                       <img
                         key={card.info.id}
                         className="chain-img"
-                        src={CDN_URL + card.info.cloudinaryImageId}
+                        src={CDN_URL + card?.info?.cloudinaryImageId}
                       />
                     </Link>
                   </div>

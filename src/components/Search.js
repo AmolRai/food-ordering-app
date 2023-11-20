@@ -32,7 +32,7 @@ const Search = () => {
   };
 
   const debouncedFetchData = useCallback(
-    debounce((text) => fetchData(text), 1000),
+    debounce((text) => fetchData(text), 500),
     []
   );
 
