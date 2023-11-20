@@ -28,7 +28,6 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_API);
     const json = await data.json();
-    console.log(json);
     setCarouselCard(
       json.data.cards[0].card.card.gridElements.infoWithStyle.info
     );
@@ -101,7 +100,7 @@ const Body = () => {
             {topBrandsCollection.gridElements.infoWithStyle.restaurants.map(
               (card) => {
                 return (
-                  <div>
+                  <div key={card.info.id}>
                     <Link to={"/restaurant/" + card?.info?.id}>
                       <img
                         key={card.info.id}

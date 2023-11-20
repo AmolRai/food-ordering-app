@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { SEARCH_API, PRE_SEARCH_API, CDN_URL } from "../utils/constants";
 import SearchCard from "./SearchCard";
 
@@ -6,16 +6,6 @@ const Search = () => {
   const [searchText, setSearchText] = useState("");
   const [searchResult, setSearchResult] = useState([]);
   const [preSearchResult, setPreSearchResult] = useState([]);
-
-  const handleSearchChange = (e) => {
-    setSearchText(e.target.value);
-  };
-
-  const fetchData = async () => {
-    const data = await fetch(SEARCH_API + searchText);
-    const json = await data.json();
-    setSearchResult(json?.data?.suggestions);
-  };
 
   const fetchPreSearchData = async () => {
     const data = await fetch(PRE_SEARCH_API);
@@ -25,13 +15,38 @@ const Search = () => {
     );
   };
 
+  const debounce = (func, delay) => {
+    let timeoutId;
+    return function (...args) {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        func.apply(this, args);
+      }, delay);
+    };
+  };
+
+  const fetchData = async (text) => {
+    const data = await fetch(SEARCH_API + text);
+    const json = await data.json();
+    setSearchResult(json?.data?.suggestions);
+  };
+
+  const debouncedFetchData = useCallback(
+    debounce((text) => fetchData(text), 1000),
+    []
+  );
+
+  const handleSearchChange = (e) => {
+    const newText = e.target.value;
+    setSearchText(newText);
+    debouncedFetchData(newText);
+  };
+
+  useEffect(() => {}, [debouncedFetchData]);
+
   useEffect(() => {
     fetchPreSearchData();
   }, []);
-
-  useEffect(() => {
-    fetchData();
-  }, [searchText]);
 
   return (
     <div className="search">
