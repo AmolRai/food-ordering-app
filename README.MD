@@ -1,56 +1,35 @@
 # Food Ordering Application by Amol Rai
 
-# Parcel
+## Overview
 
-- Dev Build
-- Local Server
-- HMR = Hot Module Replacement
-- File Watching Algorithm - Written in C++
-- Caching - Faster Builds
-- Image Optimization
-- Minification
-- Bundling
-- Compress
-- Consistent Hashing
-- Code Splitting
-- Differential Bundling - support older browsers
-- Diagnostic
-- Error Handling
-- HTTPs
-- Tree Shaking - remove unused codes
-- Different dev and production bundles
+The Food Ordering App allows users to browse a list of restaurants, view dishes, add items to their cart, etc. Please note that this project includes a CORS workaround for demonstration purposes only.
 
-# Lazy Loading Different Names
+### Prerequisites
 
-- Chunking
-- Code Splitting
-- Dynamic Bundling
-- lazy loading
-- on demand loading
-- dynamic import
+- Node.js and npm installed on your machine.
 
-# Food Ordering Application Features
+### Installation
 
-# 1. Home Page Features
+1. **Clone the Repository:**
+   ```bash
+   git clone https://github.com/AmolRai/namaste-react.git
+   cd food-ordering-app
+   ```
+2. **Install Dependencies:**
 
-- https://www.swiggy.com/
-- Build best offers for you
-- What's on your mind?
-- Top restaurant
+   ```bash
+   npm install
+   ```
 
-# 2. Restaurant Menu Page features
+3. **Start the Development Server:**
 
-- https://www.swiggy.com/restaurants/burger-king-ag-patil-marg-nerul-mumbai-42580
-- Show the entire restaurant information
-- Build the entire menus of cards
-- Build offers card
-- Build veg only feature
+   ```bash
+   npm start
+   ```
 
-# 3. Redux Toolkit
+4. **Install CORS Bypass Extension:**
+   You need to install a CORS bypass extension for your browser. The project currently relies on this extension to overcome CORS restrictions.
+   Download and install the "Allow CORS: Access-Control-Allow-Origin" extension for Chrome from the Chrome Web Store: https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?pli=1
+   Enable the extension while running the project to ensure proper functionality.
 
-- Install @reduxjs/toolkit and react-redux
-- Build our Store
-- Connect our store to our app
-- Dispatch(action)
-- Calls the reducer function
-- Subscribing to the store using selector
+**Extension Link:** https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf

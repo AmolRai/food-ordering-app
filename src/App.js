@@ -28,6 +28,9 @@ const App = () => {
     <Provider store={appStore}>
       <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
         <div className="app">
+          {alert(
+            `Important Note:\nThis website uses a CORS workaround for demonstration purposes. Please install the 'Allow CORS: Access-Control-Allow-Origin' extension for Chrome. \n\n You can download it from the Chrome Web Store`
+          )}
           <Header />
           <Outlet />
         </div>
