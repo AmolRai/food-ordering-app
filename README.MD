@@ -28,8 +28,11 @@ The Food Ordering App allows users to browse a list of restaurants, view dishes,
    ```
 
 4. **Install CORS Bypass Extension:**
+
+   ```bash
    You need to install a CORS bypass extension for your browser. The project currently relies on this extension to overcome CORS restrictions.
    Download and install the "Allow CORS: Access-Control-Allow-Origin" extension for Chrome from the Chrome Web Store: https://chromewebstore.google.com/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf?pli=1
    Enable the extension while running the project to ensure proper functionality.
 
-**Extension Link:** https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf
+   **Extension Link:** https://chrome.google.com/webstore/detail/allow-cors-access-control/lhobafahddgcelffkeicbaginigeejlf
+   ```
