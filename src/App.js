@@ -29,7 +29,7 @@ const App = () => {
       <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
         <div className="app">
           {alert(
-            `Important Note:\nThis website uses a CORS workaround for demonstration purposes. Please install the 'Allow CORS: Access-Control-Allow-Origin' extension for Chrome. \n\n You can download it from the Chrome Web Store`
+            `Important Note:\n\n This website uses a CORS workaround for demonstration purposes. Please install the 'Allow CORS: Access-Control-Allow-Origin' extension for Chrome. \n\n You can download it from the Chrome Web Store. Please refer to the project repository's README.md.`
           )}
           <Header />
           <Outlet />
