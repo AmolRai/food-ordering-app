@@ -78,6 +78,17 @@ const About = () => {
           consistent practice, including solving over 500+ data structure and
           algorithm problems on LeetCode and other platforms.
         </p>
+        <p
+          style={{
+            cursor: "pointer",
+            textDecoration: "underline",
+            color: "blue",
+          }}
+        >
+          <a href="https://github.com/AmolRai/namaste-react">
+            Project Repository Link
+          </a>
+        </p>
       </div>
     </div>
   );

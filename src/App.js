@@ -24,13 +24,19 @@ const App = () => {
     // Make an API call and send username and password
   }, []);
 
+  const showAlert = () => {
+    {
+      alert(
+        `Important Note:\n\n This website uses a CORS workaround for demonstration purposes. Please install the 'Allow CORS: Access-Control-Allow-Origin' extension for Chrome. \n\n You can download it from the Chrome Web Store. Please refer to the project repository's README.md or visit About me page.`
+      );
+    }
+  };
+
   return (
     <Provider store={appStore}>
       <UserContext.Provider value={{ loggedInUser: userName, setUserName }}>
         <div className="app">
-          {alert(
-            `Important Note:\n\n This website uses a CORS workaround for demonstration purposes. Please install the 'Allow CORS: Access-Control-Allow-Origin' extension for Chrome. \n\n You can download it from the Chrome Web Store. Please refer to the project repository's README.md.`
-          )}
+          {showAlert()}
           <Header />
           <Outlet />
         </div>
