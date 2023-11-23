@@ -1,5 +1,5 @@
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState, useRef } from "react";
 import { CDN_URL, RESTAURANT_API } from "../utils/constants";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
@@ -16,6 +16,9 @@ const Body = () => {
   const [mindCollection, setMindCollection] = useState([]);
   const [topBrandsCollection, setTopBrandCollection] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [filterBtnClick, setFilterBtnClick] = useState(false);
+  const [searchBtnClick, setSearchBtnClick] = useState(false);
+  const [fastDelClick, setFastDelClick] = useState(false);
 
   const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
@@ -28,6 +31,8 @@ const Body = () => {
   const fetchData = async () => {
     const data = await fetch(RESTAURANT_API);
     const json = await data.json();
+
+    console.log("json", json);
     setCarouselCard(
       json.data.cards[0].card.card.gridElements.infoWithStyle.info
     );
@@ -45,6 +50,40 @@ const Body = () => {
       json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
+
+  const getFilteredRestaurant = () => {
+    if (filterBtnClick === true) {
+      const filteredList = listOfRestaurants.filter(
+        (obj) => obj?.info?.avgRating > 4
+      );
+      // when setListOfRestaurants() function gets called react checks the diff
+      // and updates the component or render the component
+      setFilteredRestaurant(filteredList);
+    } else {
+      setFilteredRestaurant(listOfRestaurants);
+    }
+  };
+
+  useEffect(() => {
+    getFilteredRestaurant();
+  }, [filterBtnClick]);
+
+  const handleFastDelivery = () => {
+    if (fastDelClick) {
+      const sortedRestaurants = [...listOfRestaurants].sort((a, b) => {
+        const deliveryTimeA = a.info.sla.deliveryTime;
+        const deliveryTimeB = b.info.sla.deliveryTime;
+        return deliveryTimeA - deliveryTimeB;
+      });
+      setFilteredRestaurant(sortedRestaurants);
+    } else {
+      setFilteredRestaurant(listOfRestaurants);
+    }
+  };
+
+  useEffect(() => {
+    handleFastDelivery();
+  }, [fastDelClick]);
 
   const onlineStatus = useOnlineStatus();
   if (!onlineStatus) {
@@ -67,7 +106,7 @@ const Body = () => {
           {carouselCard?.map((card) => {
             return (
               <div key={card?.id}>
-                <img src={CDN_URL + card?.imageId} />
+                <img src={CDN_URL + card?.imageId} alt={card?.id} />
               </div>
             );
           })}
@@ -131,37 +170,62 @@ const Body = () => {
             }}
           />
           <button
-            className="ml-3 bg-gray-100 px-4 py-1 rounded-lg"
+            className="custom-btn"
+            style={{
+              backgroundColor: searchBtnClick && "#F0F0F5",
+              border: searchBtnClick && "1px solid gray",
+            }}
             onClick={() => {
               const filteredRestaurant = listOfRestaurants.filter((res) =>
                 res.info.name.toLowerCase().includes(searchText.toLowerCase())
               );
+              setSearchBtnClick(!searchBtnClick);
               setFilteredRestaurant(filteredRestaurant);
             }}
           >
             Search
           </button>
-        </div>
-        <div className="flex items-center justify-center gap-2">
           <button
-            className="bg-gray-100 px-4 py-1 rounded-lg"
-            onClick={() => {
-              const filteredList = listOfRestaurants.filter(
-                (obj) => obj?.info?.avgRating > 4
-              );
-              // when setListOfRestaurants() function gets called react checks the diff
-              // and updates the component or render the component
-              setFilteredRestaurant(filteredList);
+            style={{
+              backgroundColor: filterBtnClick && "#F0F0F5",
+              border: filterBtnClick && "1px solid gray",
             }}
+            className="custom-btn"
+            onClick={() => setFilterBtnClick(!filterBtnClick)}
           >
-            Top Rated Restaurant
+            Ratings 4.0+
+            {filterBtnClick && (
+              <img
+                width={10}
+                style={{ marginLeft: "5px" }}
+                src="https://cdn-icons-png.flaticon.com/128/1828/1828778.png"
+              />
+            )}
           </button>
-          {/* <input
+          <button
+            style={{
+              backgroundColor: fastDelClick && "#F0F0F5",
+              border: fastDelClick && "1px solid gray",
+            }}
+            onClick={() => setFastDelClick(!fastDelClick)}
+            className="custom-btn"
+          >
+            Fast Delivery
+            {fastDelClick && (
+              <img
+                width={10}
+                style={{ marginLeft: "5px" }}
+                src="https://cdn-icons-png.flaticon.com/128/1828/1828778.png"
+              />
+            )}
+          </button>
+        </div>
+
+        {/* <input
             value={loggedInUser}
             className="border border-black p-1 rounded-md"
             onChange={(e) => setUserName(e.target.value)}
           /> */}
-        </div>
       </div>
       <div className="flex flex-wrap justify-center gap-4">
         {filteredRestaurant?.map((resObj) => (

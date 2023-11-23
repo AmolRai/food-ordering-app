@@ -50,6 +50,8 @@
 
 .body-search {
   margin-left: 3rem;
+  display: flex;
+  gap: 8px;
 }
 
 .search-field {
@@ -286,4 +288,20 @@ p {
   gap: 10px;
   align-items: center;
   justify-content: center;
+}
+
+.custom-btn {
+  display: flex;
+  font-size: 14px;
+  align-items: center;
+  justify-content: center;
+  color: #02060cbf;
+  border-radius: 18px;
+  background-color: rgb(255, 255, 255);
+  border: 1px solid rgb(226, 226, 231);
+  padding: 6px 12px;
+  width: auto;
+  box-shadow: rgba(2, 6, 12, 0.04) 0px 2px 12px;
+  transition: background-color 0.1s ease-in 0s, border-color 0.1s ease-in 0s,
+    box-shadow 0.1s ease-in 0s, width 0.2s cubic-bezier(0.65, 0, 0.35, 1) 0s;
 }
