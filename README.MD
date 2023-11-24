@@ -12,7 +12,7 @@ The Food Ordering App allows users to browse a list of restaurants, view dishes,
 
 1. **Clone the Repository:**
    ```bash
-   git clone https://github.com/AmolRai/namaste-react.git
+   git clone https://github.com/AmolRai/food-ordering-app
    cd food-ordering-app
    ```
 2. **Install Dependencies:**

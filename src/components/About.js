@@ -85,7 +85,7 @@ const About = () => {
             color: "blue",
           }}
         >
-          <a href="https://github.com/AmolRai/namaste-react">
+          <a href="https://github.com/AmolRai/food-ordering-app">
             Project Repository Link
           </a>
         </p>

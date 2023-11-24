@@ -1,5 +1,5 @@
 {
-  "name": "namaste-react",
+  "name": "food-ordering-app",
   "version": "1.0.0",
   "description": "Food Ordering Application by Amol Rai",
   "scripts": {
@@ -9,14 +9,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AmolRai/namaste-react.git"
+    "url": "git+https://github.com/AmolRai/food-ordering-app"
   },
   "author": "Amol Rai",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AmolRai/namaste-react/issues"
+    "url": "https://github.com/AmolRai/food-ordering-app/issues"
   },
-  "homepage": "https://github.com/AmolRai/namaste-react#readme",
+  "homepage": "https://github.com/AmolRai/food-ordering-app",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
     "react": "^18.2.0",
