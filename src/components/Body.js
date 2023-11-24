@@ -69,7 +69,7 @@ const Body = () => {
 
   const handleFastDelivery = () => {
     if (fastDelClick) {
-      const sortedRestaurants = [...listOfRestaurants].sort((a, b) => {
+      const sortedRestaurants = [...listOfRestaurants]?.sort((a, b) => {
         const deliveryTimeA = a?.info?.sla?.deliveryTime;
         const deliveryTimeB = b?.info?.sla?.deliveryTime;
         return deliveryTimeA - deliveryTimeB;
