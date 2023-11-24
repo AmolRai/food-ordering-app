@@ -11,7 +11,7 @@ const Search = () => {
     const data = await fetch(PRE_SEARCH_API);
     const json = await data.json();
     setPreSearchResult(
-      json.data.cards[1].card.card.gridElements.infoWithStyle.info
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.info
     );
   };
 
@@ -66,12 +66,12 @@ const Search = () => {
       <h1 className="pop-cuisines">Popular Cuisines</h1>
       <div className="carousel-container !w-[56%]">
         <div className="flex">
-          {preSearchResult.map((res) => {
+          {preSearchResult?.map((res) => {
             return (
               <img
                 className="w-[5rem]"
-                key={res.id}
-                src={CDN_URL + res.imageId}
+                key={res?.id}
+                src={CDN_URL + res?.imageId}
               />
             );
           })}

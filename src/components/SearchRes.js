@@ -7,7 +7,7 @@ import {
   SEARCH_ACTION,
 } from "../utils/constants";
 import RestaurantCard from "../components/RestaurantCard";
-import { addItems, removeItems } from "../utils/cartSlice";
+import { addItems } from "../utils/cartSlice";
 import { useDispatch } from "react-redux";
 
 const SearchRes = () => {
@@ -20,12 +20,12 @@ const SearchRes = () => {
     const data = await fetch(SEARCH_API_CLICK_API + text + SEARCH_ACTION);
     const json = await data.json();
 
-    if (json.data.cards[1].groupedCard.cardGroupMap.DISH) {
-      setDistList(json.data.cards[1].groupedCard.cardGroupMap.DISH.cards);
+    if (json?.data?.cards[1]?.groupedCard?.cardGroupMap?.DISH) {
+      setDistList(json?.data?.cards[1]?.groupedCard?.cardGroupMap?.DISH?.cards);
     } else {
       setRestaurantList(
-        json.data.cards[1].groupedCard.cardGroupMap.RESTAURANT.cards[1].card
-          .card.restaurants
+        json?.data?.cards[1]?.groupedCard?.cardGroupMap?.RESTAURANT?.cards[1]
+          ?.card?.card?.restaurants
       );
     }
   };
@@ -47,28 +47,30 @@ const SearchRes = () => {
     <div className="flex justify-center items-center mb-10">
       <div className="flex w-[70%] justify-center gap-6 flex-wrap">
         {distList &&
-          distList.map((dish) => {
+          distList?.map((dish) => {
             return (
-              dish.card.card.info && (
+              dish?.card?.card?.info && (
                 <Link
-                  key={dish.card.card.info.id}
-                  to={"/restaurant/" + dish.card.card.restaurant.info.id}
+                  key={dish?.card?.card?.info?.id}
+                  to={"/restaurant/" + dish?.card?.card?.restaurant?.info?.id}
                 >
                   <div className="result-card">
                     <div className="w-[18rem]">
                       <h1 className="text-gray-600">
-                        {dish.card.card.restaurant.info.name}
+                        {dish?.card?.card?.restaurant?.info?.name}
                       </h1>
                       <h1 className="text-gray-500 font-light text-sm mt-1">
-                        ⭐️ {dish.card.card.restaurant.info.avgRating}
+                        ⭐️ {dish?.card?.card?.restaurant?.info?.avgRating}
                         {"   . " +
-                          dish.card.card.restaurant.info.sla.deliveryTime}{" "}
+                          dish?.card?.card?.restaurant?.info?.sla
+                            ?.deliveryTime}{" "}
                         MINS
                       </h1>
                       <div className="mt-2 text-gray-800">
-                        <h1>{dish.card.card.info.name}</h1>
+                        <h1>{dish?.card?.card?.info?.name}</h1>
                         <h1>
-                          ₹{dish.card.card.restaurant.info.costForTwo / 100}
+                          ₹
+                          {dish?.card?.card?.restaurant?.info?.costForTwo / 100}
                         </h1>
                       </div>
                     </div>
@@ -77,7 +79,7 @@ const SearchRes = () => {
                         className="w-28 h-28 object-cover rounded-lg"
                         src={
                           CDN_URL +
-                          dish.card.card.restaurant.info.cloudinaryImageId
+                          dish?.card?.card?.restaurant?.info?.cloudinaryImageId
                         }
                       />
                       <button
@@ -94,9 +96,9 @@ const SearchRes = () => {
           })}
 
         {restaurantList &&
-          restaurantList.map((res) => {
+          restaurantList?.map((res) => {
             return (
-              <Link key={res.info.id} to={"/restaurant/" + res.info.id}>
+              <Link key={res?.info?.id} to={"/restaurant/" + res?.info?.id}>
                 <RestaurantCard resData={res} />
               </Link>
             );

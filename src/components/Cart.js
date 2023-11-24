@@ -14,6 +14,7 @@ const Cart = () => {
   const dispatch = useDispatch();
 
   const handleClearCart = () => {
+    // clear cart
     dispatch(clearCart());
   };
 
@@ -24,7 +25,7 @@ const Cart = () => {
   return (
     <div
       className="cart"
-      style={{ marginTop: cartItems.length === 0 ? "10rem" : "3rem" }}
+      style={{ marginTop: cartItems?.length === 0 ? "10rem" : "3rem" }}
     >
       {cartItems.length > 0 && (
         <button
@@ -34,7 +35,7 @@ const Cart = () => {
           Clear Cart
         </button>
       )}
-      {cartItems.length === 0 && (
+      {cartItems?.length === 0 && (
         <div className="empty-cart">
           <iframe src="https://lottie.host/?file=b56df633-ffe9-4ab8-b74f-4d6656395269/zR5EXD8pxy.json"></iframe>
           <h1 className="text-2xl font-medium text-[#535665] mt-8">

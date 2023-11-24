@@ -21,7 +21,7 @@ const RestaurantsMenu = () => {
   const categories =
     resInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter(
       (c) =>
-        c.card?.card?.["@type"] ===
+        c?.card?.card?.["@type"] ===
         "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
     );
 
@@ -37,7 +37,9 @@ const RestaurantsMenu = () => {
     <div className="text-center">
       <div className="w-6/12 text-left m-auto">
         <h1 className="text-2xl font-bold">{name}</h1>
-        <p className="mb-2 mt-1 text-gray-400 text-sm">{cuisines.join(", ")}</p>
+        <p className="mb-2 mt-1 text-gray-400 text-sm">
+          {cuisines?.join(", ")}
+        </p>
         <p className="mb-2 mt-1 text-gray-400 text-sm">{message}</p>
         <div className="flex gap-2 mt-4">
           <p className="font-extrabold text-[#3E4152]">
@@ -49,9 +51,9 @@ const RestaurantsMenu = () => {
       </div>
       {/* Accordian */}
       <div className="mb-8">
-        {categories.map((res, index) => {
+        {categories?.map((res, index) => {
           return (
-            <div key={res.card.card.title}>
+            <div key={res?.card?.card?.title}>
               <RestaurantCategory
                 data={res?.card?.card}
                 showItems={index === showIndex ? true : false}

@@ -13,12 +13,12 @@ const RestaurantCategory = ({ data, showItems, setShowIndex }) => {
         onClick={handleClick}
       >
         <span className="text-lg font-bold text-[#3E4152]">
-          {data.title} ({data.itemCards.length})
+          {data.title} ({data?.itemCards?.length})
         </span>
         <span className="text-2xl">⤵</span>
       </div>
       {/* Accordian Body */}
-      {showItems && <ItemList itemCards={data.itemCards} />}
+      {showItems && <ItemList itemCards={data?.itemCards} />}
     </div>
   );
 };

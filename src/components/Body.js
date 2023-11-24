@@ -32,7 +32,6 @@ const Body = () => {
     const data = await fetch(RESTAURANT_API);
     const json = await data.json();
 
-    console.log("json", json);
     setCarouselCard(
       json.data.cards[0].card.card.gridElements.infoWithStyle.info
     );
@@ -71,8 +70,8 @@ const Body = () => {
   const handleFastDelivery = () => {
     if (fastDelClick) {
       const sortedRestaurants = [...listOfRestaurants].sort((a, b) => {
-        const deliveryTimeA = a.info.sla.deliveryTime;
-        const deliveryTimeB = b.info.sla.deliveryTime;
+        const deliveryTimeA = a?.info?.sla?.deliveryTime;
+        const deliveryTimeB = b?.info?.sla?.deliveryTime;
         return deliveryTimeA - deliveryTimeB;
       });
       setFilteredRestaurant(sortedRestaurants);
@@ -176,8 +175,10 @@ const Body = () => {
               border: searchBtnClick && "1px solid gray",
             }}
             onClick={() => {
-              const filteredRestaurant = listOfRestaurants.filter((res) =>
-                res.info.name.toLowerCase().includes(searchText.toLowerCase())
+              const filteredRestaurant = listOfRestaurants?.filter((res) =>
+                res?.info?.name
+                  ?.toLowerCase()
+                  ?.includes(searchText?.toLowerCase())
               );
               setSearchBtnClick(!searchBtnClick);
               setFilteredRestaurant(filteredRestaurant);

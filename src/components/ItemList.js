@@ -11,7 +11,6 @@ const ItemList = ({ itemCards, flag }) => {
   };
 
   const handleRemoveItem = (index) => {
-    console.log("index", index);
     dispatch(removeItems(index));
   };
 
@@ -25,20 +24,21 @@ const ItemList = ({ itemCards, flag }) => {
           >
             <div className="flex flex-col gap-[6.5px] w-[36rem]">
               <p className="text-gray-500">
-                {card.card.info?.isVeg ? "Veg" : "Non-Veg"}
+                {card?.card?.info?.isVeg ? "Veg" : "Non-Veg"}
               </p>
               <p className="font-semibold opacity-80">
-                {card.card.info?.name || card.card.card.info.name}
+                {card?.card?.info?.name || card?.card?.card?.info?.name}
               </p>
               <p>
                 ₹
-                {(card.card.info?.price && card.card.info.price / 100) ||
-                  (card.card.info?.defaultPrice &&
-                    card.card.info.defaultPrice / 100)}
-                {card.card?.card?.info?.price / 100}
+                {(card?.card?.info?.price && card?.card?.info?.price / 100) ||
+                  (card?.card?.info?.defaultPrice &&
+                    card?.card?.info?.defaultPrice / 100)}
+                {card?.card?.card?.info?.price / 100}
               </p>
               <p className="mb-2 text-gray-400 text-sm">
-                {card.card.info?.description || card.card.card.info.description}
+                {card?.card?.info?.description ||
+                  card?.card?.card?.info?.description}
               </p>
             </div>
             <div>
@@ -62,9 +62,9 @@ const ItemList = ({ itemCards, flag }) => {
               )}
               <img
                 src={
-                  (card.card.info?.imageId &&
-                    CDN_URL + card.card.info?.imageId) ||
-                  CDN_URL + card.card.card.info.imageId
+                  (card?.card?.info?.imageId &&
+                    CDN_URL + card?.card?.info?.imageId) ||
+                  CDN_URL + card?.card?.card?.info?.imageId
                 }
                 className="w-28 h-28 object-cover rounded"
               />
