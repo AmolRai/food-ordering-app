@@ -37,16 +37,16 @@ const Body = () => {
     );
 
     setMindCollection(
-      json.data.cards[1].card.card.gridElements.infoWithStyle.info
+      json.data.cards[0].card.card.gridElements.infoWithStyle.info
     );
 
-    setTopBrandCollection(json.data.cards[2].card.card);
+    setTopBrandCollection(json.data.cards[1].card.card);
 
     setListOfRestaurants(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
     setFilteredRestaurant(
-      json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants
+      json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants
     );
   };
 

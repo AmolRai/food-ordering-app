@@ -19,6 +19,7 @@
   "homepage": "https://github.com/AmolRai/food-ordering-app",
   "dependencies": {
     "@reduxjs/toolkit": "^1.9.7",
+    "caniuse-lite": "^1.0.30001591",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.3",
